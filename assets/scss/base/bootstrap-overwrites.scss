@@ -1,0 +1,128 @@
+// ################ define our theme variables here ################
+//
+$ak-primary: rgba(204, 78, 0, 1);
+$ak-primary-dark: rgba(163, 63, 0, 1);
+$ak-primary-light: rgba(255, 206, 176, 1);
+$ak-primary-extra-light: rgba(255, 233, 221, 1);
+
+$ak-teal: rgba(0, 68, 83, 1);
+$ak-teal-light: rgba(21, 100, 122, 1);
+
+$ak-secondary: $ak-teal;
+
+$ak-text-color: rgb(82, 82, 82);
+$ak-headings-color: $ak-secondary;
+
+$ak-primary-background: rgba(248, 245, 243, 0);
+
+$ak-turquoise: rgba(208, 245, 242, 1);
+$ak-blue: rgba(187, 223, 253, 1);
+
+$ak-gradient: linear-gradient(
+  120deg,
+  rgba(208, 245, 242, 1),
+  rgba(199, 243, 251, 1),
+  rgba(187, 223, 253, 1)
+);
+
+// should be in rem to calculate main offset for transparent navbar
+$logo-height: 2rem;
+
+// scss-docs-start spacer-variables-maps
+$spacer: 1rem !default;
+$spacers: (
+  0: 0,
+  1: $spacer * 0.25,
+  2: $spacer * 0.5,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 3,
+  6: $spacer * 5,
+  // added spacer for largest magin  - e.g. for headings
+) !default;
+
+$ak-headings-font-family: 'Poppins';
+$ak-headings-font-weight: 600;
+$ak-font-family-base: 'LatoWeb';
+
+// ################### overwrite bootstrap #########################
+// see ../../node_modules/bootstrap/_variables.scss
+
+$primary: $ak-primary;
+$secondary: $ak-secondary;
+$primary-bg-subtle: $ak-primary-extra-light;
+
+$body-color: $ak-text-color;
+$headings-color: $ak-headings-color;
+
+$font-family-base: $ak-font-family-base;
+$headings-font-family: $ak-headings-font-family;
+$headings-font-weight: $ak-headings-font-weight;
+
+$enable-gradients: false;
+$enable-shadows: true;
+$enable-negative-margins: true;
+
+// copied from defaults to be able to reference it here.
+// There is currently no other way to do this.
+// Maybe in bs6, see: https://github.com/twbs/bootstrap/issues/33263
+$black: #000;
+$box-shadow: 0 0.5rem 1rem rgba($black, 0.15);
+$font-size-base: 1rem;
+
+$font-size-root: 18px;
+
+// Only use three Headline sizes and shift h5 size to h3
+$h1-font-size: $font-size-base * 2.5;
+$h2-font-size: $font-size-base * 2;
+$h3-font-size: $font-size-base * 1.5;
+$h4-font-size: $font-size-base;
+$h5-font-size: $font-size-base;
+$h6-font-size: $font-size-base;
+
+$font-sizes: (
+  1: $h1-font-size,
+  2: $h2-font-size,
+  3: $h3-font-size,
+  4: $h4-font-size,
+  5: $h5-font-size,
+  6: $h6-font-size,
+);
+
+$display-font-weight: 800;
+
+// links
+
+$link-decoration: none;
+
+// buttons
+$btn-border-radius: 2rem;
+$btn-border-radius-lg: 2rem;
+$btn-border-radius-sm: 2rem;
+$btn-font-weight: bold;
+//$btn-border-width: 0;
+$btn-box-shadow: none;
+$btn-hover-bg-shade-amount: 0;
+$btn-hover-bg-tint-amount: 0;
+$btn-hover-border-shade-amount: 0;
+$btn-hover-border-tint-amount: 0;
+
+// carousel
+
+$carousel-control-color: $ak-primary;
+$carousel-indicator-active-bg: $ak-teal;
+
+// cards
+
+$card-border-width: 0;
+$card-box-shadow: $box-shadow;
+$card-cap-bg: transparent;
+$card-border-radius: 0.75rem;
+
+$card-spacer-x: map-get($spacers, 4);
+$card-spacer-y: map-get($spacers, 4);
+
+// accordions
+button.accordion-button {
+  white-space-collapse: preserve;
+}

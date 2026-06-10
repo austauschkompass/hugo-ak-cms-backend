@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="{{ site.Language.LanguageCode }}" dir="{{ or site.Language.LanguageDirection `ltr` }}">
+<head>
+  {{ partial "head.html" . }}
+</head>
+<body>
+  <a id="page-top" class="visually-hidden"></a>
+  <header>
+    {{ partial "header.html" . }}
+  </header>
+  <main>
+    {{ block "main" . }}{{ end }}
+  </main>
+  <div class="container">
+    <div class="d-flex flex-row justify-content-end">
+      <a href="#page-top" class="btn-back-to-top">
+        <i class="back-to-top-icon"></i>
+        <span class="visually-hidden">Nach Oben</span>
+      </a>
+    </div>
+  </div>
+  <footer class="footer">
+    {{ partial "footer.html" . }}
+  </footer>
+  {{- partial "svg_clip_paths" -}}
+</body>
+</html>

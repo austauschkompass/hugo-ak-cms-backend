@@ -1,0 +1,152 @@
+@import "base/typography.scss";
+@import "bootstrap/functions";
+@import "base/bootstrap-overwrites.scss";
+@import "bootstrap/variables";
+//@import "~bootstrap/scss/maps";
+@import "bootstrap/mixins";
+//@import "~bootstrap/scss/root";
+
+$bootstrap-icons-font-dir: "../fonts";
+@import "bootstrap-icons";
+
+@import "base/mixins.scss";
+// @import "atoms.scss";
+// @import "footer.scss";
+// @import "sections.scss";
+// @import "items.scss";
+// @import "main-menu.scss";
+// @import "scholarships.scss";
+//@import "molecules/feature_placement";
+//@import "organisms/catalog_order";
+// @import "templates/image_page.scss";
+// @import "templates/organisation_page.scss";
+// @import "templates/start_page.scss";
+
+@import "bootstrap/bootstrap";
+
+// /* START Fix wrong scroll position
+//    on internal link clicks.
+
+//    NOTE: scroll-behavior is set by bootstrap (reboot), but interferes
+//    with gatsby
+//    see: https://github.com/gatsbyjs/gatsby/issues/30026#issuecomment-800156769
+//  */
+// :root {
+//   scroll-behavior: unset;
+// }
+// /* END Fix wrong scroll position */
+
+// html {
+//   height: 100%;
+// }
+
+// body {
+//   height: 100%;
+//   display: flex;
+//   flex-direction: column;
+// }
+
+// main {
+//   flex-grow: 1;
+//   // pull main to top of page across navbar (which is transparent)
+//   margin-top: -($logo-height + $navbar-brand-padding-y * 2 + $navbar-padding-y * 2);
+// }
+
+// section table {
+//   @extend .table
+// }
+
+// /*
+//    Limit a grid item's width to content width to maintain readability.
+//    adding offsets so column appears centered, but text still left-aligned.
+
+//    This is used e.g. for text-oriented display modes on cms-pages.
+//  */
+// .content-width {
+//   @extend .col-lg-10;
+//   @extend .offset-lg-1;
+//   @extend .col-xxl-8;
+//   @extend .offset-xxl-2;
+// }
+
+// .banner {
+//   a {
+//     display: block;
+//     img {
+//       @extend .img-fluid;
+//     }
+//   }
+// }
+
+// .banner.skyscraper {
+//   @extend .fixed-top;
+//   @extend .mt-5;
+//   @extend .pt-2;
+//   left: auto;
+//   z-index: 1;
+// }
+
+// @media (max-width: 1550px) {
+//   .banner.skyscraper {
+//     display: none;
+//   }
+// }
+
+// @media (min-width: 1550px) {
+//   .banner.skyscraper {
+//     display: block;
+//   }
+// }
+
+// .banner.leaderboard {
+//   @extend .d-none;
+//   @extend .d-md-block ;
+//   @extend .text-center;
+//   @media (min-width: 1550px) {
+//     display: none !important;
+//   }
+// }
+
+// .banner.mobile_leaderboard {
+//   @extend .d-block;
+//   @extend .d-md-none;
+//   @extend .text-center;
+// }
+
+// .catalog-order-form {
+//   label {
+//     @extend .form-label;
+//   }
+//   .form-group {
+//     @extend .mb-3;
+//   }
+// }
+
+// /* hide empty cols */
+// .container .row .col:empty {
+//   @extend .d-none;
+// }
+
+// .card-prio {
+//   border: 1px solid red;
+// }
+
+// /* buttons */
+// .btn-primary {
+// 	@extend .text-white;
+// }
+
+// .btn-outline-primary:hover{
+//   color: white;
+//   background-color: $primary;
+// }
+
+// /* logo bar */
+
+
+// .logo-bar-organisation-image {
+//   @include media-breakpoint-up(lg) {
+//     width: 100px;
+//     height: 100px;
+//   }
+// }
