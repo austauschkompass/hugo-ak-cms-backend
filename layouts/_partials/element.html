@@ -1,0 +1,9 @@
+{{- $elementName := .name -}}
+{{- with $elementName -}}
+  {{- $elementName = ((replaceRE "([a-z0-9])([A-Z])" "${1}_${2}" $elementName) | lower) -}}
+{{- end -}}
+{{- if or (eq $elementName "default") (eq $elementName nil) (eq $elementName "") -}}
+  {{- $elementName = .default -}}
+{{- end -}}
+{{- $partialName := printf "display_modes/%s.html" $elementName -}}
+{{- partial $partialName .object -}}

@@ -1,0 +1,12 @@
+{{- $config := newScratch -}}
+{{- $fromCms := .config | transform.Unmarshal -}}
+{{- $config.Set "transformed" dict -}}
+{{- $filterKeys := .filterKeys -}}
+{{- range $k, $v := $fromCms -}}
+  {{- if in $filterKeys $k -}}
+    {{- $config.SetInMap "transformed" (printf "filter_%s" $k) $v -}}
+  {{- else -}}
+    {{- $config.SetInMap "transformed" $k $v -}}
+  {{- end -}}
+{{- end -}}
+{{- return $config.Get "transformed" -}}

@@ -1,6 +1,6 @@
 module github.com/austauschkompass/hugo-ak-cms-backend
 
-go 1.26.3
+go 1.25.1
 
 require (
 	github.com/gohugoio/hugo-mod-bootstrap-scss/v5 v5.20300.20800 // indirect

@@ -1,5 +1,5 @@
 baseURL = 'https://example.org/'
-locale = 'en-us'
+locale = 'de-de'
 title = 'AustauschKompass CMS Backend'
 
 [security]
