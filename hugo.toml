@@ -8,6 +8,10 @@ allowContent = ["! ^text/javascript$"]
 [security.funcs]
 getenv = ["CMS_API_URL", "CMS_API_TOKEN", "CRM_API_TOKEN", "ORDER_API_TOKEN"]
 
+[privacy]
+  [privacy.googleAnalytics]
+    respectDoNotTrack = true
+
 [[module.imports]]
   path = "github.com/gohugoio/hugo-mod-bootstrap-scss/v5"
 
@@ -20,6 +24,7 @@ getenv = ["CMS_API_URL", "CMS_API_TOKEN", "CRM_API_TOKEN", "ORDER_API_TOKEN"]
 
 [params]
 crm_api_url = "https://api.crm.austauschkompass.de"
+mt_url = "https://stats.schueleraustausch.net"
 
 [params.ak_order_components]
 js_url = "https://assets.austauschkompass.de/ak-order-components/1/main.js"
