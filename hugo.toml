@@ -30,6 +30,7 @@ mt_url = "https://stats.schueleraustausch.net"
 js_url = "https://assets.austauschkompass.de/ak-order-components/1/main.js"
 
 [params.ak_order_components.defaults]
+rating_api_url = "https://www.schueleraustausch.de"
 crm_api_url = "https://api.crm.austauschkompass.de"
 order_api_url = "https://api.orders.austauschkompass.de"
 upsell = true
