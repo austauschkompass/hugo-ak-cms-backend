@@ -1,0 +1,25 @@
+{{ $config := . | transform.Unmarshal }}</pre>
+
+<div
+  class="feature-placement"
+  data-controller="feature-placements"
+  data-feature-placements-context-value="{{ $config.context }}"
+  data-feature-placements-crm-api-url-value="https://api.crm.austauschkompass.de"
+  data-feature-placements-crm-api-token-value="{{ site.Params.crm_api_token }}"
+>
+  <div class="row">
+    <div class="col-lg-5 d-flex align-items-center">
+      <img data-feature-placements-target="image" alt="" loading="lazy" class="item-image img-fluid" width="426" height="426">
+    </div>
+    <div class="col-lg-7 d-flex flex-column justify-content-center">
+      <img data-feature-placements-target="logo" width="64" height="64" loading="lazy" class="mb-3">
+      <h2 class="item-headline" data-feature-placements-target="headline"></h2>
+      <div class="item-intro">
+        <p data-feature-placements-target="intro"></p>
+      </div>
+      <div class="item-body" data-feature-placements-target="body">
+      </div>
+      <a data-feature-placements-target="link" class="btn btn-primary align-self-baseline">{{ $config.linkText }}</a>
+    </div>
+  </div>
+</div>

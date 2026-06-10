@@ -1,0 +1,15 @@
+{{- $fromCms := partial "cms_filter_params" (
+  dict "filterKeys" (
+    slice "countryCode" "limit" "sortBy" "catalogEnabledOnly"
+  ) "config" .
+) -}}
+{{- $toHtml := merge (partial "order_components_defaults") $fromCms (dict "context" "organisationen" "filter_limit" "3") -}}
+{{- printf "<div id='ak-organisations-app' data-ak-config='%s'></div>" (
+  $toHtml | jsonify
+) | safeHTML -}}
+<script type="module">
+  import { rootFactories } from '{{ site.Params.ak_order_components.js_url }}'
+
+  const root = rootFactories.organisations(document.querySelector('#ak-organisations-app'))
+  root.render()
+</script>

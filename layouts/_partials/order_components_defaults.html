@@ -1,0 +1,12 @@
+{{- $config := newScratch -}}
+{{- $config.Set "transformed" dict -}}
+
+{{- range $key, $v := site.Params.ak_order_components.defaults -}}
+  {{- $parts := split $key "_" -}}
+  {{- $camelCasedEnd := apply (after 1 $parts) "strings.FirstUpper" "." -}}
+  {{- $camelCasedKey := delimit ((first 1 $parts) | append $camelCasedEnd) "" -}}
+  
+  {{- $config.SetInMap "transformed" $camelCasedKey $v -}}
+{{- end -}}
+
+{{- return $config.Get "transformed" -}}

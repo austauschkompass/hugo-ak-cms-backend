@@ -1,0 +1,25 @@
+{{- $fromCms := partial "cms_filter_params" (
+  dict "filterKeys" (
+    slice "countryCode" "duration" "startYear"
+  ) "config" .
+) -}}
+{{- $toHtml := merge (dict
+  "narrow" false
+  "programApiUrl" "https://www.schueleraustausch.net"
+  "filter_countryCode" "US"
+  "filter_duration" ""
+  "filter_startYear" nil
+  "userFilter" false
+  "limit" nil
+) (partial "order_components_defaults") $fromCms -}}
+
+{{- printf "<div id='sch-net-programs-app' data-ak-config='%s'></div>" (
+  $toHtml | jsonify
+) | safeHTML -}}
+
+<script type="module">
+  import { rootFactories } from '{{ site.Params.ak_order_components.js_url }}'
+
+  const root = rootFactories.programs(document.querySelector('#sch-net-programs-app'))
+  root.render()
+</script>

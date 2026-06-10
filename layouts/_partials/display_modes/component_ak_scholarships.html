@@ -1,0 +1,11 @@
+{{- $fromCms := partial "cms_filter_params" (dict "filterKeys" (slice) "config" .) -}}
+{{- $toHtml := merge (partial "order_components_defaults") $fromCms -}}
+{{- printf "<div id='ak-scholarships-app' data-ak-config='%s'></div>" (
+  $toHtml | jsonify
+) | safeHTML -}}
+<script type="module">
+  import { rootFactories } from '{{ site.Params.ak_order_components.js_url | safeJS }}'
+
+  const root = rootFactories.scholarships(document.querySelector('#ak-scholarships-app'))
+  root.render()
+</script>

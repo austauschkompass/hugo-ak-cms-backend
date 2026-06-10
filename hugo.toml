@@ -1,42 +1,31 @@
-baseURL = 'https://example.org/'
-locale = 'de-de'
-title = 'AustauschKompass CMS Backend'
+baseURL = "https://example.org/"
+locale = "de-de"
+title = "AustauschKompass CMS Backend"
 
 [security]
-  # Disallow javascript, instead of text/html (we need to override existing default
-  # as [] will not change the default) and we need text/html as the format we render content in
-  allowContent = ['! ^text/javascript$']
-  [security.funcs]
-    getenv = ["CMS_API_URL", "CMS_API_TOKEN", "CRM_API_TOKEN", "ORDER_API_TOKEN"]
+allowContent = ["! ^text/javascript$"]
 
+[security.funcs]
+getenv = ["CMS_API_URL", "CMS_API_TOKEN", "CRM_API_TOKEN", "ORDER_API_TOKEN"]
 
-[module]
-  [[module.imports]]
-    path = "github.com/gohugoio/hugo-mod-bootstrap-scss/v5"
+[[module.imports]]
+  path = "github.com/gohugoio/hugo-mod-bootstrap-scss/v5"
 
-  [[module.imports]]
-    path = "github.com/hotwired/stimulus"
-  [[module.imports.mounts]]
-    source = "src"
-    target = "assets/js/stimulus"
+[[module.imports]]
+  path = "github.com/hotwired/stimulus"
 
-    # This does not work as the build chain for mux-player is too complex to _just work_
-    # via esbuild
-    # [[module.imports]]
-    #   path = "github.com/muxinc/elements"
-    #   version = "@mux/mux-player@3.13.1"
-    # [[module.imports.mounts]]
-    #   source = "packages/mux-player/src"
-    #   target = "assets/@mux/mux-player"
-    # [[module.imports.mounts]]
-    #   source = "packages/mux-video/src"
-    #   target = "assets/@mux/mux-video"
+[[module.imports.mounts]]
+  source = "src"
+  target = "assets/js/stimulus"
 
 [params]
-  crm_api_url = "https://api.crm.austauschkompass.de"
-  [params.ak_order_components]
-    js_url = "https://assets.austauschkompass.de/ak-order-components/1/main.js"
-    # js_url = "http://localhost:8000/main.js"
-    order_api_url = "https://api.orders.austauschkompass.de"
-    upsell = true
-    upsell_prechecked = true
+crm_api_url = "https://api.crm.austauschkompass.de"
+
+[params.ak_order_components]
+js_url = "https://assets.austauschkompass.de/ak-order-components/1/main.js"
+
+[params.ak_order_components.defaults]
+crm_api_url = "https://api.crm.austauschkompass.de"
+order_api_url = "https://api.orders.austauschkompass.de"
+upsell = true
+upsell_prechecked = true

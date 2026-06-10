@@ -1,5 +1,4 @@
 import * as bootstrap from 'js/bootstrap'
-
 export const setup = () => {
   setupPopovers()
   setupCarousels()
