@@ -2,12 +2,6 @@ baseURL = "https://example.org/"
 locale = "de-de"
 title = "AustauschKompass CMS Backend"
 
-[security]
-allowContent = ["! ^text/javascript$"]
-
-[security.funcs]
-getenv = ["CMS_API_URL", "CMS_API_TOKEN", "CRM_API_TOKEN", "ORDER_API_TOKEN"]
-
 [privacy]
   [privacy.googleAnalytics]
     respectDoNotTrack = true
