@@ -1,7 +1,7 @@
 {{- $internal := gt (.target_page_path | len) 1 -}}
 {{- $to := .target_url -}}
 {{- if $internal -}}
-  {{- $to = printf "/%s/" .target_page_path -}}
+  {{- $to = printf "/%s/" (.target_page_path | strings.TrimLeft "/" | strings.TrimRight "/")  -}}
 {{- end -}}
 {{- if and (ne $to "") (ne $to nil) -}}
   {{- $textContent := .target_link_text -}}
