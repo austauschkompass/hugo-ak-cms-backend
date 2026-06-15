@@ -1,0 +1,10 @@
+{{ if .Params.Sections }}
+  {{ range first 1 .Params.Sections }}
+    {{ partial "section" (merge . (dict "isFirst" true)) }}
+  {{ end }}
+  {{ range after 1 .Params.Sections }}
+    {{ partial "section" . }}
+  {{ end }}
+{{ end }}
+
+

@@ -18,13 +18,9 @@
 
 {{ range $data.pages }}
   {{ $path := .path | strings.TrimRight "/" | strings.TrimLeft "/" }}
-  {{ fmt.Warnf "A path %s" $path }}
   {{ $section :=  split $path "/" | first 1 }}
-  {{ fmt.Warnf "A section %s" $section }}
   {{ $sections = $sections | append $section | uniq }}
 {{ end }}
-
-{{ fmt.Warnf "Sections: %v" $sections }}
 
 {{/* Add pages and page resources. */}}
 {{ range $data.pages }}
@@ -44,7 +40,6 @@
   {{ $kind := "page" }}
 
   {{ if in $sections $path }}
-    {{ fmt.Warnf "Found section %s" $path }}
     {{ $kind = "section" }}
   {{ end }}
 
@@ -55,12 +50,6 @@
     "path" $path
     "title" .title
   }}
-
-  {{ if eq $kind "section" }}
-    {{ fmt.Warnf "Adding Section: %s" $path }}
-  {{ else }}
-    {{ fmt.Warnf "Adding Page: %s" $path }}
-  {{ end }}
 
   {{ $.AddPage $page }}
 {{ end }}
