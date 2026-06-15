@@ -4,3 +4,5 @@ github.com/gohugoio/hugo-mod-jslibs-dist/popperjs/v2 v2.21100.20000/go.mod h1:mF
 github.com/hotwired/stimulus v3.2.2+incompatible h1:nfLpfVrZL4me28C3+k/87yGIEMpKjdAAEsuuroZ6G7A=
 github.com/hotwired/stimulus v3.2.2+incompatible/go.mod h1:jP22mBx6dIpqJDoQgEPMKgHpwO3C2rnhn4qjjC+0kC0=
 github.com/twbs/bootstrap v5.3.8+incompatible/go.mod h1:fZTSrkpSf0/HkL0IIJzvVspTt1r9zuf7XlZau8kpcY0=
+github.com/twbs/icons v1.13.1 h1:6bmNXvoeIbvjFWjfbjXg5JGbelLD1haIsMaEIzE9UZI=
+github.com/twbs/icons v1.13.1/go.mod h1:GnRlymgVWp5iVJCMa0Me5b6tFyGpVc2bSxPMRGIJmyA=

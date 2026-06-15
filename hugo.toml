@@ -10,6 +10,14 @@ title = "AustauschKompass CMS Backend"
   path = "github.com/gohugoio/hugo-mod-bootstrap-scss/v5"
 
 [[module.imports]]
+  ignoreConfig = true
+  path = "github.com/twbs/icons"
+
+[[module.imports.mounts]]
+  source = "font"
+  target = "assets/scss/bootstrap-icons/font"
+
+[[module.imports]]
   path = "github.com/hotwired/stimulus"
 
 [[module.imports.mounts]]
