@@ -1,0 +1,3 @@
+{{ range resources.ByType "font" }}
+  <link rel="preload" href="{{ .RelPermalink }}" as="font" type="{{ .MediaType.Type }}" crossorigin>
+{{ end }}

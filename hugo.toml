@@ -16,6 +16,11 @@ title = "AustauschKompass CMS Backend"
 [[module.imports.mounts]]
   source = "font"
   target = "assets/scss/bootstrap-icons/font"
+  files = [ "! fonts"]
+
+[[module.imports.mounts]]
+  source = "font/fonts"
+  target = "assets/fonts/bootstrap-icons"
 
 [[module.imports]]
   path = "github.com/hotwired/stimulus"
