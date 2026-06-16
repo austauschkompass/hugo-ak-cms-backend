@@ -1,11 +1,21 @@
 {{- $config := newScratch -}}
 {{- $config.Set "transformed" dict -}}
 
-{{- range $key, $v := site.Params.ak_order_components.defaults -}}
+{{- range $key, $v := . -}}
   {{- $parts := split $key "_" -}}
+  {{/* Handle filters differently, as they need to be prefixed with filter_ */}}
+  {{- $isFilter := false -}}
+  {{- if eq (index $parts 0) "filter" -}}
+    {{- $parts = after 1 $parts -}}
+    {{- $isFilter = true -}}
+  {{- end -}}
+
   {{- $camelCasedEnd := apply (after 1 $parts) "strings.FirstUpper" "." -}}
   {{- $camelCasedKey := delimit ((first 1 $parts) | append $camelCasedEnd) "" -}}
-  
+
+  {{- if $isFilter -}}
+    {{- $camelCasedKey = printf "filter_%s" $camelCasedKey -}}
+  {{- end -}}
   {{- $config.SetInMap "transformed" $camelCasedKey $v -}}
 {{- end -}}
 

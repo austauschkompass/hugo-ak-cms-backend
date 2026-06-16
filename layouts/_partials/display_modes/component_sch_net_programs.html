@@ -11,7 +11,9 @@
   "filter_startYear" nil
   "userFilter" false
   "limit" nil
-) (partial "order_components_defaults") $fromCms -}}
+)
+(partial "components_defaults" site.Params.ak_order_components.defaults)
+(partial "components_defaults" (index (index site.Params "sch_net_programs") "defaults")) $fromCms -}}
 
 {{- printf "<div id='sch-net-programs-app' data-ak-config='%s'></div>" (
   $toHtml | jsonify

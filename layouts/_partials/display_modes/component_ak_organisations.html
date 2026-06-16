@@ -3,7 +3,11 @@
     slice "countryCode" "limit" "sortBy" "catalogEnabledOnly"
   ) "config" .
 ) -}}
-{{- $toHtml := merge (partial "order_components_defaults") $fromCms (dict "context" "organisationen" "filter_limit" "3") -}}
+{{- $toHtml := merge
+(partial "components_defaults" site.Params.ak_order_components.defaults)
+(partial "components_defaults" (index (index site.Params "ak_organisations") "defaults"))
+
+$fromCms -}}
 {{- printf "<div id='ak-organisations-app' data-ak-config='%s'></div>" (
   $toHtml | jsonify
 ) | safeHTML -}}

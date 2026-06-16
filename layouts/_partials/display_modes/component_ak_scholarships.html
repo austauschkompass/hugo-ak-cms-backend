@@ -1,5 +1,7 @@
 {{- $fromCms := partial "cms_filter_params" (dict "filterKeys" (slice) "config" .) -}}
-{{- $toHtml := merge (partial "order_components_defaults") $fromCms -}}
+{{- $toHtml := merge (partial "components_defaults" site.Params.ak_order_components.defaults)
+(partial "components_defaults" (index (index site.Params "ak_scholarships") "defaults"))
+$fromCms -}}
 {{- printf "<div id='ak-scholarships-app' data-ak-config='%s'></div>" (
   $toHtml | jsonify
 ) | safeHTML -}}
