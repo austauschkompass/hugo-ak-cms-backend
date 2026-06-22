@@ -1,0 +1,21 @@
+{{ define "main" }}
+  {{- $toHtml := merge
+  (partial "components_defaults" site.Params.ak_order_components.defaults)
+  (partial "components_defaults" (index (index site.Params "ak_catalog_order") "defaults"))
+  -}}
+  <section class="container">
+    <div class="row">
+      <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+    {{- printf "<div id='ak-catalog-order-app' data-ak-config='%s'></div>" (
+      $toHtml | jsonify
+    ) | safeHTML -}}
+      </div>
+    </div>
+  </section>
+  <script type="module">
+    import { rootFactories } from '{{ site.Params.ak_order_components.js_url }}'
+
+    const root = rootFactories.catalogOrder(document.querySelector('#ak-catalog-order-app'))
+    root.render()
+  </script>
+{{ end }}

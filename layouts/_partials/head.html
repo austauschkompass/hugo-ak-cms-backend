@@ -1,7 +1,7 @@
 {{ partial "head/tracking_header" . }}
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ printf "%s | %s" .Params.meta_title site.Title }}{{ end }}</title>
+<title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ printf "%s | %s" (.Params.meta_title | default .Title) site.Title }}{{ end }}</title>
 <meta name="description" content="{{ .Params.meta_description }}">
 <meta name='keywords' content="{{ .Params.meta_keywords }}">
 
