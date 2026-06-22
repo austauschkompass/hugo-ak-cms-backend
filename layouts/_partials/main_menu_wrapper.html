@@ -1,7 +1,9 @@
-<nav class="navbar navbar-gradient navbar-expand-lg navbar-light">
+<nav class="navbar navbar-custom navbar-expand-lg navbar-light">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <img src="/images/auslandsjahr-logo.svg" alt="auslandjahr-logo" class="brand-logo" width="100"></img>
+      {{ with resources.Get "images/navbar_logo.svg" }}
+        <img src="{{ .RelPermalink }}" alt="{{ site.Title }} Logo" class="brand-logo" height="50"></img>
+      {{ end }}
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-expanded="false" aria-label="Navigation ein-/ausblenden">
       <span class="navbar-toggler-icon"></span>
