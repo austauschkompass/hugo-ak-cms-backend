@@ -1,47 +1,31 @@
 {{- $url := printf "%s/api/v1/site" (getenv "CMS_API_URL") }}
 {{- $opts := dict
-  "headers" (dict "Authorization" (printf "Bearer %s" (getenv "CMS_API_TOKEN")))
+"headers" (dict "Authorization" (printf "Bearer %s" (getenv "CMS_API_TOKEN")))
 }}
 {{- $data := resources.GetRemote $url $opts | transform.Unmarshal }}
 
 {{- $menu := where $data.menus "name" "main_menu" | first 1 }}
-<nav class="navbar navbar-gradient navbar-expand-lg navbar-light">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      <img src="/images/auslandsjahr-logo.svg" alt="auslandjahr-logo" class="brand-logo" width="100"></img>
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-expanded="false" aria-label="Navigation ein-/ausblenden">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">{{ site.Title }}</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-      </div>
-      <div class="offcanvas-body">
-        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-          {{ range $menu }}
+{{- $ctx := dict "menu" $menu -}}
+
+{{- with partial "main_menu_wrapper" $ctx -}}
+  {{ range .menu }}
+    {{ range .entries }}
+      {{ if eq (.entries | len) 0 }}
+        <li class="nav-item">
+          <a href="{{ urls.AbsURL .target_page_path }}" class="nav-link">{{ .target_text }}</a>
+        </li>
+      {{ else }}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            {{ .target_text }}
+          </a>
+          <ul class="dropdown-menu">
             {{ range .entries }}
-              {{ if eq (.entries | len) 0 }}
-                <li class="nav-item">
-                  <a href="{{ urls.AbsURL .target_page_path }}" class="nav-link">{{ .target_text }}</a>
-                </li>
-              {{ else }}
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    {{ .target_text }}
-                  </a>
-                  <ul class="dropdown-menu">
-                    {{ range .entries }}
-                      <li><a class="dropdown-item" href="{{ urls.AbsURL .target_page_path }}">{{ .target_text }}</a></li>
-                    {{ end }}
-                  </ul>
-                </li>
-              {{ end }}
+              <li><a class="dropdown-item" href="{{ urls.AbsURL .target_page_path }}">{{ .target_text }}</a></li>
             {{ end }}
-          {{ end }}
-        </ul>
-      </div>
-    </div>
-  </div>
-</nav>
+          </ul>
+        </li>
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{- end -}}

@@ -1,0 +1,23 @@
+<footer class="footer-custom">
+<div class='container py-5'>
+  <div class='row align-items-center text-center'>
+    <div class='col-12 col-lg-3 text-lg-start mb-4 mb-lg-0'>
+      <a href="/">
+        {{ with resources.Get "images/footer_logo.svg" }}
+          <img src="{{ .RelPermalink }}" alt="{{ site.Title }} Logo" height="45" class='img-fluid'>
+        {{ end }}
+      </a>
+    </div>
+    <div class='col-12 col-lg-6 mb-4 mb-lg-0'>
+      <nav class="nav navbar-footer justify-content-center">
+        {{ templates.Inner . }}
+      </nav>
+    </div>
+    <div class='col-12 col-lg-3 text-lg-end'>
+      <p class="mb-0">
+        &copy; {{ now.Year }} - AustauschKompass GmbH
+      </p>
+    </div>
+  </div>
+</div>
+</div>
