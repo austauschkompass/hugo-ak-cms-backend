@@ -8,15 +8,21 @@
 {{- $menu := where $data.menus "name" "meta_menu" | first 1 }}
 {{- $ctx := dict "text" $footerText -}}
 
-{{- with partial "footer_wrapper" $ctx -}}
-  {{ range $menu }}
-    {{ range $index, $entry := .entries }}
-      {{ if ne $index 0 }}
-        <div class='vr'></div>
+{{- partial "back_to_top" -}}
+
+<footer class="footer">
+  {{- with partial "footer_wrapper" $ctx -}}
+    {{ range $menu }}
+      {{ range $index, $entry := .entries }}
+        {{ if ne $index 0 }}
+          <div class='vr'></div>
+        {{ end }}
+        <div class="nav-item">
+          <a href="{{ urls.AbsURL .target_page_path }}" class="nav-link">{{ .target_text }}</a>
+        </div>
       {{ end }}
-      <div class="nav-item">
-        <a href="{{ urls.AbsURL .target_page_path }}" class="nav-link">{{ .target_text }}</a>
-      </div>
     {{ end }}
-  {{ end }}
-{{- end -}}
+  {{- end -}}
+</footer>
+
+{{- partial "svg_clip_paths" -}}
