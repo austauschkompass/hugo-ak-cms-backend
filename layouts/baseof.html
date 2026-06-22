@@ -3,7 +3,7 @@
 <head>
   {{ partial "head.html" . }}
 </head>
-<body>
+<body class="{{ block "body_class" . }}{{ end }}">
   {{ block "header" . }}{{ partial "header" . }}{{ end }}
   <main>
     {{ block "main" . }}{{ .Content }}{{ end }}
