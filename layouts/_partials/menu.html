@@ -5,6 +5,9 @@
 {{- $data := resources.GetRemote $url $opts | transform.Unmarshal }}
 
 {{- $menu := where $data.menus "name" "main_menu" | first 1 }}
+{{- $ctx := dict "menu" $menu -}}
+
+{{ with partial "" $ctx }}
 <nav class="navbar navbar-gradient navbar-expand-lg navbar-light">
   <div class="container">
     <a class="navbar-brand" href="/">
@@ -45,3 +48,4 @@
     </div>
   </div>
 </nav>
+{{ end }}
