@@ -1,0 +1,43 @@
+.banner {
+  a {
+    display: block;
+    img {
+      @extend .img-fluid;
+    }
+  }
+}
+
+.banner.skyscraper {
+  @extend .fixed-top;
+  @extend .mt-5;
+  @extend .pt-2;
+  left: auto;
+  z-index: 1;
+}
+
+@media (max-width: 1550px) {
+  .banner.skyscraper {
+    display: none;
+  }
+}
+
+@media (min-width: 1550px) {
+  .banner.skyscraper {
+    display: block;
+  }
+}
+
+.banner.leaderboard {
+  @extend .d-none;
+  @extend .d-md-block ;
+  @extend .text-center;
+  @media (min-width: 1550px) {
+    display: none !important;
+  }
+}
+
+.banner.mobile_leaderboard {
+  @extend .d-block;
+  @extend .d-md-none;
+  @extend .text-center;
+}

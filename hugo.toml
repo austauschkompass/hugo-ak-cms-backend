@@ -31,7 +31,7 @@ title = "AustauschKompass CMS Backend"
 
 [params]
 crm_api_url = "https://api.crm.austauschkompass.de"
-mt_url = "https://stats.schueleraustausch.net"
+mt_url = "https://stats.schueleraustausch.net/"
 
 [params.ak_order_components]
 js_url = "https://assets.austauschkompass.de/ak-order-components/1/main.js"

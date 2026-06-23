@@ -2,6 +2,7 @@
   {{ range first 1 .Params.Sections }}
     {{ partial "section" (merge . (dict "isFirst" true)) }}
   {{ end }}
+  {{ templates.Inner . }}
   {{ range after 1 .Params.Sections }}
     {{ partial "section" . }}
   {{ end }}

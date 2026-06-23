@@ -1,0 +1,9 @@
+{{ define "main" }}
+  {{ partial "banner/display" (dict "size" "skyscraper") }}
+  {{ with partial "sections" . }}
+    {{ partial "banner/leaderboards" }}
+  {{ end }}
+{{ end }}
+{{ define "body_end" }}
+  {{ partial "banner/init" . }}
+{{ end }}

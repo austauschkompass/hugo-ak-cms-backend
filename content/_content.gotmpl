@@ -32,7 +32,6 @@
     "meta_keywords" .meta_data.meta_keywords
     "subline" .subline
     "lead_text" .lead_text
-    "author" $data.author "isbn" $data.isbn "rating" $data.rating "tags" .tags
     "sections" (sort .sections "position")
   }}
   {{ $dates := dict "date" (time.AsTime $data.updated_at) }}
@@ -43,11 +42,14 @@
     {{ $kind = "section" }}
   {{ end }}
 
+  {{ $type := printf "cms_layout_%s" (replaceRE "([a-z0-9])([A-Z])" "${1}_${2}" .layout) | lower }}
+
   {{ $page := dict
     "content" $content
     "kind" $kind
     "params" $params
     "path" $path
+    "type" $type
     "title" .title
   }}
 

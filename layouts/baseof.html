@@ -9,5 +9,6 @@
     {{ block "main" . }}{{ .Content }}{{ end }}
   </main>
   {{ block "footer" . }}{{ partial "footer" . }}{{ end }}
+  {{ block "body_end" . }}{{ end }}
 </body>
 </html>
