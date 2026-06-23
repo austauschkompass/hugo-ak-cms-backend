@@ -72,10 +72,13 @@
   }}
   {{ $dates := dict "date" (time.AsTime $data.updated_at) }}
 
+  {{ $type := printf "cms_layout_%s" (replaceRE "([a-z0-9])([A-Z])" "${1}_${2}" .layout) | lower }}
+
   {{ $page := dict
     "content" $content
     "kind" "home"
     "params" $params
+    "type" $type
     "title" .title
   }}
 
