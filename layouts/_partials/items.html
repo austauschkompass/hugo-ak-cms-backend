@@ -1,4 +1,4 @@
 {{ $sectionIsFirst := .isFirst }}
-{{ range $idx, $item := (sort .items "position") }}
+{{ range $idx, $item := (cond .itemsArePresorted .items (sort .items "position")) }}
   {{ partial "item" (merge $item (dict "isFirst" (and $sectionIsFirst (eq $idx 0)) )) }}
 {{ end }}

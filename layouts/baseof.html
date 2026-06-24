@@ -4,11 +4,18 @@
   {{ partial "head.html" . }}
 </head>
 <body class="{{ block "body_class" . }}{{ end }}">
+  {{ block "body_start" . }}{{ end }}
+  {{ block "before_header" . }}{{ end }}
   {{ block "header" . }}{{ partial "header" . }}{{ end }}
+  {{ block "after_header" . }}{{ end }}
+  {{ block "before_main" . }}{{ end }}
   <main>
     {{ block "main" . }}{{ .Content }}{{ end }}
   </main>
+  {{ block "after_main" . }}{{ end }}
+  {{ block "before_footer" . }}{{ end }}
   {{ block "footer" . }}{{ partial "footer" . }}{{ end }}
+  {{ block "after_footer" . }}{{ end }}
   {{ block "body_end" . }}{{ end }}
 </body>
 </html>

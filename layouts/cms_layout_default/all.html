@@ -1,6 +1,6 @@
 {{ define "body_class" }}layout-default{{ end }}
+{{ define "before_main" }}{{ partial "banner/display" (dict "size" "skyscraper") }}{{ end }}
 {{ define "main" }}
-  {{ partial "banner/display" (dict "size" "skyscraper") }}
   {{ with partial "sections" . }}
     {{ partial "banner/leaderboards" }}
   {{ end }}
