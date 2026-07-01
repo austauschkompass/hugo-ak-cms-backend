@@ -1,6 +1,5 @@
 {{- $config := newScratch -}}
 {{- $config.Set "transformed" dict -}}
-
 {{- range $key, $v := . -}}
   {{- $parts := split $key "_" -}}
   {{/* Handle filters differently, as they need to be prefixed with filter_ */}}
@@ -16,7 +15,18 @@
   {{- if $isFilter -}}
     {{- $camelCasedKey = printf "filter_%s" $camelCasedKey -}}
   {{- end -}}
-  {{- $config.SetInMap "transformed" $camelCasedKey $v -}}
+  {{/*
+  NOTE: Environment variables are untyped strings,
+  therefore we need to parse bool from them to allow configuring apps fully.
+  */}}
+  {{- $typedValue := $v -}}
+  {{- if eq $v "true" -}}
+    {{- $typedValue = true -}}
+  {{- end -}}
+  {{- if eq $v "false" -}}
+    {{- $typedValue = false -}}
+  {{- end -}}
+  {{- $config.SetInMap "transformed" $camelCasedKey $typedValue -}}
 {{- end -}}
 
 {{- return $config.Get "transformed" -}}

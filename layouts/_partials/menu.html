@@ -12,7 +12,7 @@
     {{ range .entries }}
       {{ if eq (.entries | len) 0 }}
         <li class="nav-item">
-          <a href="{{ urls.AbsURL .target_page_path }}" class="nav-link">{{ .target_text }}</a>
+          <a href="{{ partial "cms_url" . }}" class="nav-link">{{ .target_text }}</a>
         </li>
       {{ else }}
         <li class="nav-item dropdown">
@@ -20,8 +20,28 @@
             {{ .target_text }}
           </a>
           <ul class="dropdown-menu">
+            {{ if .target_page_path }}
+              <li class="dropdown-menu-parent-item">
+                <a href="{{ partial "cms_url" . }}" class="dropdown-item">{{ .target_text }}</a>
+              </li>
+              <li><hr class="dropdown-divider"></li>
+            {{ end }}
+
             {{ range .entries }}
-              <li><a class="dropdown-item" href="{{ urls.AbsURL .target_page_path }}">{{ .target_text }}</a></li>
+              <li>
+                {{ if .target_page_path }}
+                  <a class="dropdown-item" href="{{ partial "cms_url" . }}">{{ .target_text }}</a>
+                {{ else }}
+                  <div class="h6 dropdown-header">{{ .target_text }}</div>
+                {{ end }}
+              </li>
+              {{ if ne (.entries | len) 0 }}
+                {{ range .entries }}
+                  <li>
+                      <a class="dropdown-item" href="{{ partial "cms_url" . }}">{{ .target_text }}</a>
+                  </li>
+                {{ end }}
+              {{ end }}
             {{ end }}
           </ul>
         </li>

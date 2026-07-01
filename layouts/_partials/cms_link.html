@@ -1,22 +1,11 @@
-{{- $internal := gt (.target_page_path | len) 1 -}}
-{{- $to := .target_url -}}
-{{- if $internal -}}
-  {{- $to = printf "/%s/" (.target_page_path | strings.TrimLeft "/" | strings.TrimRight "/")  -}}
-{{- end -}}
+{{- $to := partial "cms_url" . -}}
 {{- if and (ne $to "") (ne $to nil) -}}
   {{- $textContent := .target_link_text -}}
   {{- if .target_text -}}
     {{- $textContent = .target_text -}}
   {{- end -}}
   {{- $content := $textContent -}}
-  {{/* Use Gatsby Link for internal links, and <a> for others */}}
-  {{- if or (eq $internal "") (eq $internal nil) -}}
-    <a href="{{- $to -}}" class="{{- .class -}}">
-      {{- $content -}}
-    </a>
-  {{- else -}}
-    <a href="{{- $to -}}" class="{{- .class -}}" >
-      {{- $content -}}
-    </a>
-  {{- end -}}
+  <a href="{{- $to -}}" class="{{- .class -}}" >
+    {{- $content -}}
+  </a>
 {{- end -}}

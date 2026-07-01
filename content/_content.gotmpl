@@ -32,7 +32,7 @@
     "meta_keywords" .meta_data.meta_keywords
     "subline" .subline
     "lead_text" .lead_text
-    "sections" (sort .sections "position")
+    "sections" (sort (.sections | default slice) "position")
   }}
   {{ $dates := dict "date" (time.AsTime $data.updated_at) }}
   {{ $path := .path | strings.TrimRight "/" | strings.TrimLeft "/" }}
@@ -68,7 +68,7 @@
     "lead_text" .lead_text
     "image_url" .image_url
     "author" $data.author "isbn" $data.isbn "rating" $data.rating "tags" .tags
-    "sections" (sort .sections "position")
+    "sections" (sort (.sections | default slice) "position")
   }}
   {{ $dates := dict "date" (time.AsTime $data.updated_at) }}
 

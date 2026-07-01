@@ -1,0 +1,6 @@
+{{- $internal := gt (.target_page_path | default "" | len) 1 -}}
+{{- $to := .target_url -}}
+{{- if $internal -}}
+  {{- $to = printf "/%s/" (.target_page_path | strings.TrimLeft "/" | strings.TrimRight "/")  -}}
+{{- end -}}
+{{- return $to -}}
