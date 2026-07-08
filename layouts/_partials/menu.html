@@ -19,31 +19,35 @@
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             {{ .target_text }}
           </a>
-          <ul class="dropdown-menu">
+          <div class="dropdown-menu">
             {{ if .target_page_path }}
-              <li class="dropdown-menu-parent-item">
+              <div class="dropdown-menu-parent-item">
                 <a href="{{ partial "cms_url" . }}" class="dropdown-item">{{ .target_text }}</a>
-              </li>
-              <li><hr class="dropdown-divider"></li>
+              </div>
+              <hr class="dropdown-divider" role="separator">
             {{ end }}
 
-            {{ range .entries }}
-              <li>
-                {{ if .target_page_path }}
-                  <a class="dropdown-item" href="{{ partial "cms_url" . }}">{{ .target_text }}</a>
-                {{ else }}
-                  <div class="h6 dropdown-header">{{ .target_text }}</div>
-                {{ end }}
-              </li>
-              {{ if ne (.entries | len) 0 }}
-                {{ range .entries }}
-                  <li>
-                      <a class="dropdown-item" href="{{ partial "cms_url" . }}">{{ .target_text }}</a>
-                  </li>
-                {{ end }}
+            <ul class="list-unstyled navbar-custom-level-2 navbar-custom-nav">
+              {{ range .entries }}
+                <li class="navbar-custom-item navbar-custom-level-2">
+                  {{ if .target_page_path }}
+                    <a class="dropdown-item" href="{{ partial "cms_url" . }}">{{ .target_text }}</a>
+                  {{ else }}
+                    <div class="h6 dropdown-header">{{ .target_text }}</div>
+                  {{ end }}
+                  {{ if ne (.entries | len) 0 }}
+                    <ul class="list-unstyled navbar-custom-level-3 navbar-custom-nav">
+                      {{ range .entries }}
+                        <li class="navbar-custom-item navbar-custom-level-3">
+                          <a class="dropdown-item" href="{{ partial "cms_url" . }}">{{ .target_text }}</a>
+                        </li>
+                      {{ end }}
+                    </ul>
+                  {{ end }}
+                </li>
               {{ end }}
-            {{ end }}
-          </ul>
+            </ul>
+          </div>
         </li>
       {{ end }}
     {{ end }}
