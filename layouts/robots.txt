@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
-Sitemap: https://www.sprachreisenvergleich.de/sitemap.xml
-Host: https://www.sprachreisenvergleich.de
+Sitemap: {{ urls.JoinPath site.BaseURL "sitemap.xml" }}
+Host: {{ site.BaseURL }}
