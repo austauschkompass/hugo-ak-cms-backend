@@ -1,8 +1,4 @@
-{{- $fromCms := partial "cms_filter_params" (
-  dict "filterKeys" (
-    slice "countryCode" "duration" "startYear"
-  ) "config" .
-) -}}
+{{- $fromCms := partial "cms_filter_params" (dict "config" .) -}}
 {{- $toHtml := merge (dict
   "narrow" false
   "programApiUrl" "https://www.schueleraustausch.net"

@@ -1,4 +1,4 @@
-{{- $fromCms := partial "cms_filter_params" (dict "filterKeys" (slice) "config" .) -}}
+{{- $fromCms := partial "cms_filter_params" (dict "config" .) -}}
 {{- $toHtml := merge (partial "components_defaults" site.Params.ak_order_components.defaults)
 (partial "components_defaults" (index (index site.Params "ak_scholarships") "defaults"))
 $fromCms -}}
