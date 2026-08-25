@@ -1,3 +1,7 @@
-<div class="image-generation-method-badge" data-generation-method="{{ .image_generation_method }}">
+{{ if eq .image_generation_method "human" }}
   {{ templates.Inner . }}
-</div>
+{{ else }}
+  <div class="image-generation-method-badge" data-generation-method="{{ .image_generation_method }}">
+    {{ templates.Inner . }}
+  </div>
+{{ end }}
