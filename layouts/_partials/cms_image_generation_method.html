@@ -1,0 +1,11 @@
+{{ if eq .image_generation_method "human" }}
+  {{ templates.Inner . }}
+{{ else }}
+  <div class="image-generation-method-wrapper">
+    <img
+      class="image-generation-method-badge"
+      src="/images/image_generation_methods/{{  .image_generation_method }}.svg"
+    >
+    {{ templates.Inner . }}
+  </div>
+{{ end }}
