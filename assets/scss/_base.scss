@@ -2,9 +2,7 @@
 @import "bootstrap/functions";
 @import "base/bootstrap-overwrites.scss";
 @import "bootstrap/variables";
-//@import "~bootstrap/scss/maps";
 @import "bootstrap/mixins";
-//@import "~bootstrap/scss/root";
 
 $bootstrap-icons-font-dir: "/fonts/bootstrap-icons";
 @import "bootstrap-icons/font/bootstrap-icons";
@@ -14,3 +12,4 @@ $bootstrap-icons-font-dir: "/fonts/bootstrap-icons";
 @import "bootstrap/bootstrap";
 
 @import "base/banner";
+@import "base/image_generation_method";
