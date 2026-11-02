@@ -1,6 +1,7 @@
-{{- $to := partial "cms_url" (.attributes.link | default dict) -}}
+{{- $link := index (.attributes | default dict) (.link_attribute | default "link") | default dict -}}
+{{- $to := partial "cms_url" $link -}}
 {{- if and (ne $to "") (ne $to nil) -}}
   <a href="{{- $to -}}" class="{{- .class -}}" >
-   {{- .attributes.link.text -}}
+   {{- $link.text -}}
   </a>
 {{- end -}}
